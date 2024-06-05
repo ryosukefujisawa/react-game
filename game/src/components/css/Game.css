@@ -1,0 +1,99 @@
+header {
+    background-color:  #f4f4f4;
+    color: white;
+    padding: 10px 0px;
+    box-shadow: 0 2px 5px #0000001a;
+    /* position: fixed; */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .title h1 a {
+    /* color: white; */
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+
+/* main */
+/* main {
+    padding-top: 135px;
+} */
+
+
+
+/* rankingのul,liタグ */
+.ranking {
+    counter-reset: rank;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.ranking li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+.ranking li::before {
+    counter-increment: rank;
+    content: counter(rank) "位";
+    width: 40px;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+}
+.ranking li .name {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+}
+.ranking li .score {
+    width: 120px;
+    text-align: right;
+}
+
+
+.ranking li:first-child::before {
+    margin-top: 10px; /* 上部の余白を追加 */
+}
+
+/* 記録無しメッセージのスタイル */
+.ranking li.empty::before {
+    content: "";
+    color: #666; /* グレーの色を指定 */
+}
+
+
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    margin-top: 200px;
+    padding-bottom: 100px;
+}
+
+@media (max-width: 800px) {
+    .ranking li .name {
+        width: 100px;
+    }
+    .ranking li::before {
+        width: 80px;
+    }
+    
+}
