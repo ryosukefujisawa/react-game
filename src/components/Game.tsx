@@ -86,7 +86,9 @@ const Game = () => {
               </div>
             </header>
             <main>
+
                 {selectGame(game)}  
+                
             </main>
             <footer>
                 {/* <button onClick={() => {setGame("name"); setUserScore(0);}}>名前変更</button> */}
