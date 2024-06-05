@@ -3,7 +3,7 @@ import { useKey } from 'react-use';
 import SnakeBoard from './SnakeBoard';
 import GameOver from '../GameOver';
 import { 
-    CELL_SIZE, 
+     
     generateFoodPosition, 
     initialSnake, 
     moveSnake, 

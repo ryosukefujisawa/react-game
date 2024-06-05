@@ -14,22 +14,7 @@ interface GameOverProps {
 
 const GameOver = (props: GameOverProps) => {
 
-    const handleScoreSubmit = async () => {
-        try {
-          /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-          await axios.post('http://localhost:3001/scores', { name: props.userName, score: props.userScore });
-          
-          /* フォームの入力をクリア */
-          // setUserName('名無し');
-          
-          /* 最新のスコアリストを再取得して画面に反映 */
-          const response = await axios.get<Score[]>('http://localhost:3001/scores');
-          props.setScores(response.data);
-        }
-        catch (err) {
-          console.log("Error submitting score:", err);
-        }
-    };
+
 
     const Restart = () => {
         props.setGameOver(false);
@@ -40,6 +25,23 @@ const GameOver = (props: GameOverProps) => {
     };
 
     useEffect(() => {
+        const handleScoreSubmit = async () => {
+            try {
+              /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
+              await axios.post('http://localhost:3001/scores', { name: props.userName, score: props.userScore });
+              
+              /* フォームの入力をクリア */
+              // setUserName('名無し');
+              
+              /* 最新のスコアリストを再取得して画面に反映 */
+              const response = await axios.get<Score[]>('http://localhost:3001/scores');
+              props.setScores(response.data);
+            }
+            catch (err) {
+              console.log("Error submitting score:", err);
+            }
+        };
+        
         handleScoreSubmit();
     }, []);
 

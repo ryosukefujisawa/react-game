@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Board from "./Board";
-import GameOver from "../GameOver";
+// import GameOver from "../GameOver";
 import '../css/2048.css';
 
 

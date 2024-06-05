@@ -63,8 +63,8 @@ export const moveSnake = async(
         head.x += 1;
         break;
       case 'STOP':
-        head.x = head.x;
-        head.y = head.y;
+        // head.x = head.x;
+        // head.y = head.y;
         break;
 
       default:

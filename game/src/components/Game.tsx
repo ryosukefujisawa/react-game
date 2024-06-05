@@ -4,7 +4,6 @@ import TwoZeroFourEight from './2048/TwoZeroFourEight';
 import SnakeGame from './SnakeGame/SnakeGame';
 import Name from './Name';
 import axios from 'axios';
-import { response } from 'express';
 
 import { Score } from './SnakeGame/utils/utils';
 
@@ -34,6 +33,7 @@ const Game = () => {
     fetchScores();
   }, []);
 
+  /*
   const handleDeleteScore = async () => {
     try {
       await axios.delete('http://localhost:3001/scores');
@@ -45,7 +45,7 @@ const Game = () => {
       console.log("Error submitting score:", err);
     }
   };
-
+    */
   
     const selectGame = (game: string) => {
         // console.log(game);

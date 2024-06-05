@@ -1,4 +1,4 @@
-import GameOver from "../GameOver";
+// import GameOver from "../GameOver";
 import { BoardSize } from "./utils/utils";
 
 const Board = () => {
