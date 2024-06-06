@@ -27,7 +27,7 @@ const GameOver = (props: GameOverProps) => {
         const handleScoreSubmit = async () => {
             try {
               /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-              await axios.post('scores-game.mysql.database.azure.com/score_gaame/scores', { name: userName, score: userScore });
+              await axios.post('scores-game.mysql.database.azure.com:3306/scores', { name: userName, score: userScore });
               
               /* フォームの入力をクリア */
               // setUserName('名無し');
