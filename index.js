@@ -12,6 +12,7 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 app.use((req, res, next) => {
     res.setHeader('x-content-type-options', 'nosniff');
     res.setHeader('cache-control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Access-Comtrol-Allow-Origin', 'https://wonderful-dune-020695f1e.5.azurestaticapps.net/');
     next();
 });
 
