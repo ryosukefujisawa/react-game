@@ -21,7 +21,7 @@ const Game = () => {
         const fetchScores = async () => {
             try {
                 /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
-                const response = await axios.get<Score[]>('http://localhost:3001/scores');
+                const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
                 setScores(response.data);
                 console.log(scores);
             }
@@ -30,7 +30,7 @@ const Game = () => {
             }
         };
         fetchScores();
-    }, []);
+    }, [scores]);
 
     // const handleDeleteScore = async () => {
     //     try {
@@ -56,7 +56,7 @@ const Game = () => {
                     userScore={userScore}
                     userName={userName}
                 />;
-                
+
             case "name":
                 return <Name
                     userName={userName}
@@ -77,7 +77,7 @@ const Game = () => {
         <>
             <header>
                 <div className="title">
-                    <h1><a onClick={() => { setGame("menu"); setUserScore(0); }} >ゲーム集</a></h1>
+                    <h1><button id="manu" onClick={() => { setGame("menu"); setUserScore(0); }} >ゲーム集</button></h1>
                 </div>
             </header>
             <main>
