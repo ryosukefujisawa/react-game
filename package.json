@@ -3,9 +3,7 @@
   "proxy": "https://score-database.azurewebsites.net",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
