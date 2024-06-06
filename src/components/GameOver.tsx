@@ -27,13 +27,13 @@ const GameOver = (props: GameOverProps) => {
         const handleScoreSubmit = async () => {
             try {
               /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-              await axios.post('https://wonderful-dune-020695f1e.5.azurestaticapps.net/scores', { name: userName, score: userScore });
+              await axios.post('scores-game.mysql.database.azure.com/scores', { name: userName, score: userScore });
               
               /* フォームの入力をクリア */
               // setUserName('名無し');
               
               /* 最新のスコアリストを再取得して画面に反映 */
-              const response = await axios.get<Score[]>('https://wonderful-dune-020695f1e.5.azurestaticapps.net/scores');
+              const response = await axios.get<Score[]>('scores-game.mysql.database.azure.comscores');
               setScores(response.data);
             }
             catch (err) {
