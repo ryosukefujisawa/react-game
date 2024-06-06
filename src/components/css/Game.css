@@ -50,7 +50,8 @@ header .title h1 #menu {
     font-size: 16px;
     display: flex;
     align-items: center;
-    width: 30%;
+    width: 30vmin;
+
 }
 .ranking li::before {
     counter-increment: rank;
@@ -78,6 +79,7 @@ header .title h1 #menu {
 
 /* 記録無しメッセージのスタイル */
 .ranking li.empty::before {
+    
     text-align: center;
     content: "";
     color: #666; /* グレーの色を指定 */
