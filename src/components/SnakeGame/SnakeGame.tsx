@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useKey } from 'react-use';
 import GameOver from '../GameOver';
 import '../css/SnakeGame.css';
@@ -31,6 +31,19 @@ const SnakeGame = (props: SnakeGameProps) => {
     const [intervalTime, setIntervalTime] = useState<number>(200);
     const [hitCount, setHitCount] = useState<number>(0);
 
+    /*　ページのスクロール */
+    const scrollRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        // moveSnakeというIDを持つ要素がマウントされた後、スクロール
+        if (scrollRef.current) {
+
+            setTimeout(() => {
+                scrollRef.current?.scrollIntoView({behavior: 'smooth'});
+            }, 500);
+        }
+    })
+
+    /* ゲームが動くたび */
     useEffect(() => {
         const interval = setInterval(() => moveSnake(
             direction, 
@@ -53,6 +66,7 @@ const SnakeGame = (props: SnakeGameProps) => {
         setDirection, setHitCount, props.setUserScore
         ]
     );
+
 
     const handleKeyPress = (newDirection: Direction, e: KeyboardEvent) => {
         e.preventDefault();
@@ -77,11 +91,11 @@ const SnakeGame = (props: SnakeGameProps) => {
     useKey('ArrowLeft',  (e) => handleKeyPress('LEFT',  e as KeyboardEvent));
     useKey('ArrowRight', (e) => handleKeyPress('RIGHT', e as KeyboardEvent));  
 
-
     return (
         <>
             <div
                 id="moveSnake"
+                ref={scrollRef}
                 // tabIndex={0}
             >
                 <h1 id="SnakeTitle">Snake Game</h1>

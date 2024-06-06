@@ -46,7 +46,7 @@ const Game = () => {
 
   
     const selectGame = (game: string) => {
-        // console.log(game);
+
         switch(game) {
             case "snake":
                 return  <SnakeGame 
