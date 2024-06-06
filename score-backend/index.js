@@ -13,8 +13,8 @@ require('dotenv').config();
 const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
 /* データベースへの新しい接続を作成 */
 const db = mysql.createConnection({
-    host:     'localhost', // データベースサーバーのホスト名
-    user:     'root',       // データベースにアクセスする権限を持つユーザー名を設定
+    host:     'scores-game.mysql.database.azure.com', // データベースサーバーのホスト名
+    user:     'ryosuke',       // データベースにアクセスする権限を持つユーザー名を設定
     password: dbPassword,   // データベース接続に使用するパスワード
     database: 'score_game'  // 接続されるデータベースの名前
 });
@@ -85,5 +85,5 @@ app.delete('/scores', (req, res) => {
 
 /* 指定したポート番号でサーバーを起動 */
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+    console.log(`Server running at https://wonderful-dune-020695f1e.5.azurestaticapps.net/${port}/`);
 });
