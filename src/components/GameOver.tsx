@@ -23,6 +23,18 @@ const GameOver = (props: GameOverProps) => {
         props.setGame("menu");
     };
 
+    // const scrollRef = useRef<HTMLDivElement>(null);
+    // useEffect(() => {
+    //     // moveSnakeというIDを持つ要素がマウントされた後、スクロール
+    //     if (scrollRef.current) {
+    //         // scrollRef.current.scrollTop = 140;
+    //         setTimeout(() => {        
+    //             scrollRef.current?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    //         }, 100);
+    //     }
+    // }, [scrollRef]);
+
+
     useEffect(() => {
         const handleScoreSubmit = async () => {
             try {
