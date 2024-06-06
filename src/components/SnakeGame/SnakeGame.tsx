@@ -36,12 +36,12 @@ const SnakeGame = (props: SnakeGameProps) => {
     useEffect(() => {
         // moveSnakeというIDを持つ要素がマウントされた後、スクロール
         if (scrollRef.current) {
-
-            setTimeout(() => {
-                scrollRef.current?.scrollIntoView({behavior: 'smooth'});
-            }, 500);
+            // scrollRef.current.scrollTop = 140;
+            setTimeout(() => {        
+                scrollRef.current?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+            }, 100);
         }
-    })
+    }, [scrollRef]);
 
     /* ゲームが動くたび */
     useEffect(() => {
