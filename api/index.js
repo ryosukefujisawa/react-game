@@ -11,12 +11,15 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 
 require('dotenv').config();
 const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbDatabase = process.env.DB_DATABASE;
 /* データベースへの新しい接続を作成 */
 const db = mysql.createConnection({
-    host:     'localhost', // データベースサーバーのホスト名
-    user:     'root',       // データベースにアクセスする権限を持つユーザー名を設定
+    host:     dbHost, // データベースサーバーのホスト名
+    user:     dbUser,       // データベースにアクセスする権限を持つユーザー名を設定
     password: dbPassword,   // データベース接続に使用するパスワード
-    database: 'score_game'  // 接続されるデータベースの名前
+    database: dbDatabase  // 接続されるデータベースの名前
 });
 
 
