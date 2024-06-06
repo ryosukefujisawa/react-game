@@ -78,6 +78,7 @@ header .title h1 #menu {
 
 /* 記録無しメッセージのスタイル */
 .ranking li.empty::before {
+    text-align: center;
     content: "";
     color: #666; /* グレーの色を指定 */
 }
