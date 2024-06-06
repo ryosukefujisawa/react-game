@@ -12,7 +12,7 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 app.use((req, res, next) => {
     res.setHeader('x-content-type-options', 'nosniff');
     res.setHeader('cache-control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Access-Comtrol-Allow-Origin', 'https://wonderful-dune-020695f1e.5.azurestaticapps.net/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://wonderful-dune-020695f1e.5.azurestaticapps.net');
     next();
 });
 
@@ -35,7 +35,7 @@ const db = mysql.createConnection({
 db.connect((err) => {
     if (err) {
         console.error('Database connection failed: ' + err.stack);
-        return;
+        process.exit(1);
     }
     console.log('Connected to database.');
 });
@@ -59,6 +59,7 @@ app.get('/scores', (req, res) => {
         if (err) {
             console.error('Error executing SQL query:', err); // エラーをログに記録する
             res.status(500).send(err);  // Internal server Error
+            return;
         }
         else {
             res.json(results);  // クエリの結果をJSON形式でレスポンスとして送信
@@ -89,7 +90,7 @@ app.delete('/scores', (req, res) => {
             res.status(500).send(err);
         }
         else {
-            res.status(201).send({ id: results.insertId });
+            res.status(201).send('All scores have beendeleted.');
         }
     });
 });
