@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import TwoZeroFourEight from './2048/TwoZeroFourEight';
 import Name from './Name';
 import SnakeGame from './SnakeGame/SnakeGame';
 import StartMenu from "./StartMenu";
@@ -33,17 +32,17 @@ const Game = () => {
         fetchScores();
     }, []);
 
-    const handleDeleteScore = async () => {
-        try {
-            await axios.delete('http://localhost:3001/scores');
+    // const handleDeleteScore = async () => {
+    //     try {
+    //         await axios.delete('http://localhost:3001/scores');
 
-            const response = await axios.get<Score[]>('http://localhost:3001/scores');
-            setScores(response.data);
-        }
-        catch (err) {
-            console.log("Error submitting score:", err);
-        }
-    };
+    //         const response = await axios.get<Score[]>('http://localhost:3001/scores');
+    //         setScores(response.data);
+    //     }
+    //     catch (err) {
+    //         console.log("Error submitting score:", err);
+    //     }
+    // };
 
 
     const selectGame = (game: string) => {
@@ -57,10 +56,7 @@ const Game = () => {
                     userScore={userScore}
                     userName={userName}
                 />;
-
-            case "2048":
-                return <TwoZeroFourEight setGame={setGame} />
-
+                
             case "name":
                 return <Name
                     userName={userName}

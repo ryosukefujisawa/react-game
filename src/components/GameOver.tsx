@@ -13,6 +13,7 @@ interface GameOverProps {
 }
 
 const GameOver = (props: GameOverProps) => {
+    const {userName, userScore, setScores } = props;
 
     const Restart = () => {
         props.setGameOver(false);
@@ -26,21 +27,22 @@ const GameOver = (props: GameOverProps) => {
         const handleScoreSubmit = async () => {
             try {
                 /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-                await axios.post('http://localhost:3001/scores', { name: props.userName, score: props.userScore });
+                await axios.post('http://localhost:3001/scores', { name: userName, score: userScore });
                 
                 /* フォームの入力をクリア */
                 // setUserName('名無し');
                 
                 /* 最新のスコアリストを再取得して画面に反映 */
                 const response = await axios.get<Score[]>('http://localhost:3001/scores');
-                props.setScores(response.data);
+                setScores(response.data);
             }
             catch (err) {
                 console.log("Error submitting score:", err);
             }
         };
+
         handleScoreSubmit();
-    }, []);
+    }, [userName, userScore, setScores]);
 
 
     return (
