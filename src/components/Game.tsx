@@ -21,7 +21,7 @@ const Game = () => {
     const fetchScores = async () => {
       try {
         /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
-        const response = await axios.get<Score[]>('');
+        const response = await axios.get<Score[]>('/scores');
         setScores(response.data);
         console.log(scores);
       }
