@@ -27,13 +27,13 @@ const GameOver = (props: GameOverProps) => {
         const handleScoreSubmit = async () => {
             try {
               /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-              await axios.post('scores-game.mysql.database.azure.com/scores', { name: userName, score: userScore });
+              await axios.post('scores-game.mysql.database.azure.com/score_gaame/scores', { name: userName, score: userScore });
               
               /* フォームの入力をクリア */
               // setUserName('名無し');
               
               /* 最新のスコアリストを再取得して画面に反映 */
-              const response = await axios.get<Score[]>('scores-game.mysql.database.azure.comscores');
+              const response = await axios.get<Score[]>('scores-game.mysql.database.azure.comscores/score_game/scores');
               setScores(response.data);
             }
             catch (err) {
