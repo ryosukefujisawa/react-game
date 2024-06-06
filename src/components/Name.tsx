@@ -22,7 +22,7 @@ const Name = (props: NameProps) => {
                         id="name"
                         autoComplete='off'
                     />
-                    <button onClick={() => props.setGame("menu")}>決定</button>
+                    <button className="decided" onClick={() => props.setGame("menu")}>決定</button>
                     <p className="note">一度決めると画面をリロードするまで変更できません</p>
                 </div>
             </div>

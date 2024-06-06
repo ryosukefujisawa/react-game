@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
-import StartMenu from "./StartMenu";
-import TwoZeroFourEight from './2048/TwoZeroFourEight';
-import SnakeGame from './SnakeGame/SnakeGame';
-import Name from './Name';
 import axios from 'axios';
-import { response } from 'express';
+import { useEffect, useState } from 'react';
+import Name from './Name';
+import SnakeGame from './SnakeGame/SnakeGame';
+import StartMenu from "./StartMenu";
 
 import { Score } from './SnakeGame/utils/utils';
 
@@ -32,19 +30,19 @@ const Game = () => {
       }
     };
     fetchScores();
-  }, []);
+  }, [scores]);
 
-  const handleDeleteScore = async () => {
-    try {
-      await axios.delete('http://localhost:3001/scores');
+//   const handleDeleteScore = async () => {
+//     try {
+//       await axios.delete('http://localhost:3001/scores');
     
-      const response = await axios.get<Score[]>('http://localhost:3001/scores');
-      setScores(response.data);
-    }
-    catch (err) {
-      console.log("Error submitting score:", err);
-    }
-  };
+//       const response = await axios.get<Score[]>('http://localhost:3001/scores');
+//       setScores(response.data);
+//     }
+//     catch (err) {
+//       console.log("Error submitting score:", err);
+//     }
+//   };
 
   
     const selectGame = (game: string) => {
@@ -59,8 +57,8 @@ const Game = () => {
                             userName={userName}
                         />;
 
-            case "2048":
-                return  <TwoZeroFourEight setGame={setGame} />
+            // case "2048":
+            //     return  <TwoZeroFourEight setGame={setGame} />
 
             case "name":
                 return  <Name 
@@ -82,7 +80,7 @@ const Game = () => {
         <>  
             <header>
               <div className="title">
-                  <h1><a onClick={() => {setGame("menu"); setUserScore(0); }} >ゲーム集</a></h1>
+                  <h1><button id="menu" onClick={() => {setGame("menu"); setUserScore(0); }} >ゲーム集</button></h1>
               </div>
             </header>
             <main>

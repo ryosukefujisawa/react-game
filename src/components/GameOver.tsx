@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { Score } from './SnakeGame/utils/utils';
-import './css/GameOverStyle.css'
+import './css/GameOverStyle.css';
 
 interface GameOverProps {
     setGameOver:  React.Dispatch<React.SetStateAction<boolean>>;

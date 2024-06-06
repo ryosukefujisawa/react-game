@@ -20,7 +20,7 @@ const StartMenu = (props : StartProps) => {
                 <div className="game-label">
                     <img src={SnakeGameImage} alt="Snake Game Icon" />
                     <span>スネークゲーム</span>
-                    <button value="snake" onClick={() => gameStart("snake")} >Start</button>
+                    <button className='decided' value="snake" onClick={() => gameStart("snake")} >Start</button>
                     <div className='tooltip'>
                         矢印キーで蛇を操作することができます。<br />
                         <strong>進行方向の反対方向には進めません。</strong><br/>
@@ -34,7 +34,7 @@ const StartMenu = (props : StartProps) => {
                 {/* <div className="game-label">
                     <p>no Image</p>
                     <span>2048</span>
-                    <button value="2048" onClick={() => gameStart("2048")}>Start</button>
+                    <button className="decided" value="2048" onClick={() => gameStart("2048")}>Start</button>
                     <div className='tooltip'>2048の説明</div>
                 </div> */}
             </div>

@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useKey } from 'react-use';
-import SnakeBoard from './SnakeBoard';
 import GameOver from '../GameOver';
-import { 
-    CELL_SIZE, 
-    generateFoodPosition, 
-    initialSnake, 
-    moveSnake, 
-    Direction, 
+import '../css/SnakeGame.css';
+import SnakeBoard from './SnakeBoard';
+import {
+    Direction,
     Position,
-    Score
+    Score,
+    generateFoodPosition,
+    initialSnake,
+    moveSnake
 } from './utils/utils';
-import '../css/SnakeGame.css'
 
 
 
