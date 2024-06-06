@@ -9,6 +9,11 @@ const port = 3001;       // なんでも大丈夫 Reactが3000ポートなので
 
 app.use(cors());         // corsをexpressアプリに追加
 app.use(express.json()); // ボディをjson形式で解析する クライアントがJSON形式のデータを送信した場合に、それをJavaScriptオブジェクトに変換し、Expressのリクエストオブジェクトに格納することができます
+app.use((req, res, next) => {
+    res.setHeader('x-content-type-options', 'nosniff');
+    res.setHeader('cache-control', 'no-cache, no-store, must-revalidate');
+    next();
+});
 
 require('dotenv').config();
 const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
