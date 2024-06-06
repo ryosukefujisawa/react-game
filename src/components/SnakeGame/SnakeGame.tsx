@@ -47,8 +47,12 @@ const SnakeGame = (props: SnakeGameProps) => {
             props.setUserScore,
         ), intervalTime);
         return () => clearInterval(interval);
-    }, [direction, snake]);
-
+    }, [
+        direction, snake, food, intervalTime, hitCount, 
+        setSnake, setFood, setGameOver, setIntervalTime, 
+        setDirection, setHitCount, props.setUserScore
+        ]
+    );
 
     const handleKeyPress = (newDirection: Direction, e: KeyboardEvent) => {
         e.preventDefault();
