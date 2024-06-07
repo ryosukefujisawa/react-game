@@ -15,25 +15,25 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 // const dbDatabase = process.env.DB_DATABASE;
 const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
 /* データベースへの新しい接続を作成 */
-// const db = mysql.createConnection({
-//     host:     process.env.AZURE_MYSQL_HOST || 'localhost', // データベースサーバーのホスト名
-//     user:     process.env.AZURE_MYSQL_USER || 'root',       // データベースにアクセスする権限を持つユーザー名を設定
-//     password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
-//     database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
-//     // ssl: {
-//     //     rejectUnauthorized: true,
-//     // },
-// });
-
 const db = mysql.createConnection({
-    host: 'scores-game.mysql.database.azure.com',
-    user: 'ryosuke',
-    password: dbPassword,
-    database: 'score_game',
+    host:     process.env.AZURE_MYSQL_HOST || 'localhost', // データベースサーバーのホスト名
+    user:     process.env.AZURE_MYSQL_USER || 'root',       // データベースにアクセスする権限を持つユーザー名を設定
+    password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
+    database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
     ssl: {
         rejectUnauthorized: true,
     },
 });
+
+// const db = mysql.createConnection({
+//     host: 'scores-game.mysql.database.azure.com',
+//     user: 'ryosuke',
+//     password: dbPassword,
+//     database: 'score_game',
+//     ssl: {
+//         rejectUnauthorized: true,
+//     },
+// });
 
 console.log('DB Host:', process.env.AZURE_MYSQL_HOST);
 console.log('Server Port:', port);
