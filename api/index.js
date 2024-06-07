@@ -13,19 +13,19 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 // const dbUser = process.env.DB_USER;
 // const dbDatabase = process.env.DB_DATABASE;
 /* データベースへの新しい接続を作成 */
-// const db = mysql.createConnection({
-//     host:     process.env.AZURE_MYSQL_HOST, // データベースサーバーのホスト名
-//     user:     process.env.AZURE_MYSQL_USER,       // データベースにアクセスする権限を持つユーザー名を設定
-//     password: process.env.AZURE_MYSQL_PASSWORD,   // データベース接続に使用するパスワード
-//     database: process.env.AZURE_MYSQL_DATABASE  // 接続されるデータベースの名前
-// });
-const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: dbPassword,
-    database: 'score_game'
+    host:     process.env.AZURE_MYSQL_HOST, // データベースサーバーのホスト名
+    user:     process.env.AZURE_MYSQL_USER,       // データベースにアクセスする権限を持つユーザー名を設定
+    password: process.env.AZURE_MYSQL_PASSWORD,   // データベース接続に使用するパスワード
+    database: process.env.AZURE_MYSQL_DATABASE  // 接続されるデータベースの名前
 });
+// const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: dbPassword,
+//     database: 'score_game'
+// });
 
 
 /* エラーハンドリング */
