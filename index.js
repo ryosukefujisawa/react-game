@@ -100,6 +100,7 @@ app.post('/scores', (req, res) => {
     });
 });
 
+
 /* tabalの中身を消してidを1からにする */
 app.delete('/scores', (req, res) => {
     db.query('TRUNCATE TABLE scores', (err, results) => {
