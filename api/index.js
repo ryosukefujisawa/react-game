@@ -4,7 +4,7 @@ const cors = require('cors');       // ミッドルウェア 異なるドメイ�
 
 require('dotenv').config();
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
-const port = process.env.AZURE_MYSQL_PORT || 3001;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
+const port = process.env.AZURE_MYSQL_PORT || 8181;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
 
 app.use(cors());         // corsをexpressアプリに追加
 app.use(express.json()); // ボディをjson形式で解析する クライアントがJSON形式のデータを送信した場合に、それをJavaScriptオブジェクトに変換し、Expressのリクエストオブジェクトに格納することができます
@@ -18,7 +18,10 @@ const db = mysql.createConnection({
     host:     process.env.AZURE_MYSQL_HOST || 'localhost', // データベースサーバーのホスト名
     user:     process.env.AZURE_MYSQL_USER || 'root',       // データベースにアクセスする権限を持つユーザー名を設定
     password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
-    database: process.env.AZURE_MYSQL_DATABASE || 'score_game'  // 接続されるデータベースの名前
+    database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
+    ssl: {
+        rejectUnauthorized: true,
+    },
 });
 
 // const db = mysql.createConnection({
@@ -28,8 +31,8 @@ const db = mysql.createConnection({
 //     database: 'score_game'
 // });
 
-console.log(process.env.AZURE_MYSQL_HOST);
-console.log(port);
+console.log('DB Host:', process.env.AZURE_MYSQL_HOST);
+console.log('Server Port:', port);
 /* エラーハンドリング */
 db.connect((err) => {
     if (err) {
