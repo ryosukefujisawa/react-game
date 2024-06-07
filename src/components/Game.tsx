@@ -15,6 +15,7 @@ const Game = () => {
     const [userName, setUserName] = useState<string>('名無し');
     const [userScore, setUserScore] = useState<number>(Number);
 
+    
 
     useEffect(() => {
         /* 非同期関数 */
