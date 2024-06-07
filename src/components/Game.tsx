@@ -21,7 +21,7 @@ const Game = () => {
     const fetchScores = async () => {
       try {
         /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
-        const response = await axios.get<Score[]>('https://wonderful-dune-020695f1e.5.azurestaticapps.net/scores');
+        const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
         setScores(response.data);
         console.log(scores);
       }
