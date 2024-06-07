@@ -20,9 +20,9 @@ const db = mysql.createConnection({
     user:     process.env.AZURE_MYSQL_USER || 'root',       // データベースにアクセスする権限を持つユーザー名を設定
     password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
     database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
-    ssl: {
-        rejectUnauthorized: true,
-    },
+    // ssl: {
+    //     rejectUnauthorized: true,
+    // },
 });
 
 // const db = mysql.createConnection({
