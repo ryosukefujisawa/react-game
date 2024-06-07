@@ -25,6 +25,11 @@ header .title h1 a {
 
 
 /* main */
+#menu {
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
 /* main {
     padding-top: 135px;
 } */

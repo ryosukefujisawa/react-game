@@ -77,7 +77,7 @@ const Game = () => {
         <>
             <header>
                 <div className="title">
-                    <h1><button id="manu" onClick={() => { setGame("menu"); setUserScore(0); }} >ゲーム集</button></h1>
+                    <h1><button id="menu" onClick={() => { setGame("menu"); setUserScore(0); }} >ゲーム集</button></h1>
                 </div>
             </header>
             <main>
