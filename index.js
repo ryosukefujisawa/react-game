@@ -7,12 +7,8 @@ const fs = require('fs');
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
 const port = 3001;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
 
-const corsOptions = {
-    origin: 'https://wonderful-dune-020695f1e.5.azurestaticapps.net',
-    optionsSuccessstatus: 200
-}
 
-app.use(cors(corsOptions));         // corsをexpressアプリに追加
+app.use(cors());         // corsをexpressアプリに追加
 app.use(express.json()); // ボディをjson形式で解析する クライアントがJSON形式のデータを送信した場合に、それをJavaScriptオブジェクトに変換し、Expressのリクエストオブジェクトに格納することができます
 // app.use((req, res, next) => {
 //     res.setHeader('x-content-type-options', 'nosniff');
