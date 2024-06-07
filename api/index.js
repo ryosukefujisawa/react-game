@@ -27,7 +27,8 @@ const db = mysql.createConnection({
 //     database: 'score_game'
 // });
 
-
+console.log(process.env.AZURE_MYSQL_HOST);
+console.log(port);
 /* エラーハンドリング */
 db.connect((err) => {
     if (err) {
