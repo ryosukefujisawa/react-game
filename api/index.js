@@ -48,6 +48,22 @@ db.connect((err) => {
 /* GETリクエストを処理するハンドラー */
 app.get('/scores', (req, res) => {
     /* 実行するSQLクエリ */
+    const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS scores (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            score INT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURREN_TIMESTAMP
+            )
+    `;
+    db.query(createTableQuery, (err, results, fields) => {
+        if (err) {
+            console.error('Error creating table:', err);
+            return;
+        }
+        console.log('Table created successfully');
+    });
+    
     const query = `
         SELECT id, name, score, created_at, 
         @rank := @rank + 1 AS ranking 
@@ -55,6 +71,7 @@ app.get('/scores', (req, res) => {
         ORDER BY score DESC 
         LIMIT 10
     `;
+    
 
     /* データベースにクエリを送信 */ 
     db.query(query, (err, results) => {
