@@ -30,7 +30,7 @@ const db = mysql.createConnection({
     password: dbPassword,   // データベース接続に使用するパスワード
     database: 'score_game',  // 接続されるデータベースの名前
     ssl: {
-        ca: fs.readFileSync('./DigiCertGlobalRootG2.crt.pem'),
+        ca: fs.readFileSync('DigiCertGlobalRootG2.crt.pem'),
         rejectUnauthorized: false
     }
 });
