@@ -7,6 +7,7 @@ import StartMenu from "./StartMenu";
 import { Score } from './SnakeGame/utils/utils';
 
 import './css/Game.css';
+import { response } from 'express';
 
 
 const Game = () => {
@@ -15,18 +16,19 @@ const Game = () => {
     const [userName, setUserName] = useState<string>('名無し');
     const [userScore, setUserScore] = useState<number>(Number);
 
-    
+
 
     useEffect(() => {
         /* 非同期関数 */
         const fetchScores = async () => {
             try {
                 /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
-                const response = await axios.get<Score[]>('https://react-game.azurewebsites.net/scores');
+                const response = await axios.get<Score[]>('http://localhost:3001/scores');
                 setScores(response.data);
                 console.log(scores);
             }
             catch (err) {
+                console.log(response);
                 console.error("Error fetching scores:", err);
             }
         };
