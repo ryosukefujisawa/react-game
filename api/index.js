@@ -4,7 +4,8 @@ const cors = require('cors');       // ミッドルウェア 異なるドメイ�
 
 require('dotenv').config();
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
-const port = process.env.AZURE_MYSQL_PORT || 8181;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
+// const port = process.env.AZURE_MYSQL_PORT || 8181;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
+const port = 8181;
 
 app.use(cors());         // corsをexpressアプリに追加
 app.use(express.json()); // ボディをjson形式で解析する クライアントがJSON形式のデータを送信した場合に、それをJavaScriptオブジェクトに変換し、Expressのリクエストオブジェクトに格納することができます
@@ -63,7 +64,7 @@ app.get('/scores', (req, res) => {
         }
         console.log('Table created successfully');
     });
-    
+
     const query = `
         SELECT id, name, score, created_at, 
         @rank := @rank + 1 AS ranking 

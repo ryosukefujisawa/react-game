@@ -27,13 +27,13 @@ const GameOver = (props: GameOverProps) => {
         const handleScoreSubmit = async () => {
             try {
                 /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-                await axios.post('https://react-game.azurewebsites.net:3306/scores', { name: userName, score: userScore });
+                await axios.post('https://react-game.azurewebsites.net:8181/scores', { name: userName, score: userScore });
                 
                 /* フォームの入力をクリア */
                 // setUserName('名無し');
                 
                 /* 最新のスコアリストを再取得して画面に反映 */
-                const response = await axios.get<Score[]>('https://react-game.azurewebsites.net:3306scores');
+                const response = await axios.get<Score[]>('https://react-game.azurewebsites.net:8181/scores');
                 setScores(response.data);
             }
             catch (err) {
