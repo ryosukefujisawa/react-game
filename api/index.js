@@ -29,7 +29,10 @@ const db = mysql.createConnection({
     host: 'scores-game.mysql.database.azure.com',
     user: 'ryosuke',
     password: dbPassword,
-    database: 'score_game'
+    database: 'score_game',
+    ssl: {
+        rejectUnauthorized: true,
+    },
 });
 
 console.log('DB Host:', process.env.AZURE_MYSQL_HOST);
