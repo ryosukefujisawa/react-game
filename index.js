@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
-const port = 3001;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
+const port = 8181;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
 
 
 app.use(cors());         // corsをexpressアプリに追加
@@ -47,6 +47,22 @@ db.connect((err) => {
 /* GETリクエストを処理するハンドラー */
 app.get('/scores', (req, res) => {
     /* 実行するSQLクエリ */
+    const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS scores (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            score INT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURREN_TIMESTAMP
+            )
+    `;
+    db.query(createTableQuery, (err, results, fields) => {
+        if (err) {
+            console.error('Error creating table:', err);
+            return;
+        }
+        console.log('Table created successfully');
+    });
+
     const query = `
         SELECT id, name, score, created_at, 
         @rank := @rank + 1 AS ranking 
