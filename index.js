@@ -45,7 +45,7 @@ db.connect((err) => {
 
 /* getメソッドを使用してGETリクエストを/scoresエンドポイントに関連付け */
 /* GETリクエストを処理するハンドラー */
-app.get('/scores', (req, res) => {
+app.get('/', (req, res) => {
     /* 実行するSQLクエリ */
     const createTableQuery = `
         CREATE TABLE IF NOT EXISTS scores (
@@ -86,7 +86,7 @@ app.get('/scores', (req, res) => {
 
 
 /* POSTリクエストを処理するハンドラー */
-app.post('/scores', (req, res) => {
+app.post('/', (req, res) => {
     const { name, score } = req.body;  // リクエストのボディからnameとscoreの値を抽出 JSON形式
     
     db.query('INSERT INTO scores (name, score) VALUES (?, ?)', [name, score], 
@@ -102,7 +102,7 @@ app.post('/scores', (req, res) => {
 
 
 /* tabalの中身を消してidを1からにする */
-app.delete('/scores', (req, res) => {
+app.delete('/', (req, res) => {
     db.query('TRUNCATE TABLE scores', (err, results) => {
         if(err) {
             res.status(500).send(err);
