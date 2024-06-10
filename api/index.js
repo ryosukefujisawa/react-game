@@ -53,7 +53,7 @@ db.connect((err) => {
             name VARCHAR(255) NOT NULL,
             score INT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
+        )
     `;
     db.query(createTableQuery, (err, results, fields) => {
         if (err) {
