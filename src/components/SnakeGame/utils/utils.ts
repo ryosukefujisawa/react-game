@@ -85,7 +85,7 @@ export const moveSnake = async(
         setGameOver(true);
         return ;
     }
-    else {
+    else if ( direction !== 'STOP' ) {
         setIntervalTime(prevInterval => prevInterval - 0.3);
         setUserScore(prevScore => prevScore + 1);
     }
