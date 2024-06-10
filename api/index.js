@@ -1,6 +1,7 @@
 const express = require('express'); // Node.jsのウェブフレームワーク　ウェブアプリケーションやAPIを構築できる
 const mysql = require('mysql2');    // MySQLクライアント
 const cors = require('cors');       // ミッドルウェア 異なるドメイン間でのHTTPリクエストを制御
+const  fs = require('fs');
 
 require('dotenv').config();
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
@@ -21,8 +22,10 @@ const db = mysql.createConnection({
     password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
     database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
     ssl: {
-        rejectUnauthorized: true,
+        ca: fs.readFileSync('./api/DigiCertGlobalRootCA.crt.pem'),
+        rejectUnauthorized: false
     },
+    // ssl: true
 });
 
 // const db = mysql.createConnection({
