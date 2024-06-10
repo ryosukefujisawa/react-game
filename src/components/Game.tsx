@@ -59,6 +59,7 @@ const Game = () => {
 
             // case "2048":
             //     return  <TwoZeroFourEight setGame={setGame} />
+            
 
             case "name":
                 return  <Name 

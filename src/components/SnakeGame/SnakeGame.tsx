@@ -41,7 +41,7 @@ const SnakeGame = (props: SnakeGameProps) => {
                 scrollRef.current?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
             }, 100);
         }
-    }, [scrollRef]);
+    }, [scrollRef, gameover]);
 
     /* ゲームが動くたび */
     useEffect(() => {
