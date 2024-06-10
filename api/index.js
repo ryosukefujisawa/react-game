@@ -3,7 +3,6 @@ const mysql = require('mysql2');    // MySQLクライアント
 const cors = require('cors');       // ミッドルウェア 異なるドメイン間でのHTTPリクエストを制御
 const  fs = require('fs');
 
-require('dotenv').config();
 const app = express();   // 新しいExpressアプリのインスタンスを生成 
 // const port = process.env.AZURE_MYSQL_PORT || 8181;       // なんでも大丈夫 Reactが3000ポートなので衝突を避けるためそれ以外
 const port = 3001;
@@ -14,15 +13,16 @@ app.use(express.json()); // ボディをjson形式で解析する クライア�
 // const dbHost = process.env.DB_HOST;
 // const dbUser = process.env.DB_USER;
 // const dbDatabase = process.env.DB_DATABASE;
-const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
+require('dotenv').config();
+// const dbPassword = process.env.DB_PASSWORD;  // 環境変数に設定したパスワードを読み込む
 /* データベースへの新しい接続を作成 */
 const db = mysql.createConnection({
-    host:     process.env.AZURE_MYSQL_HOST || 'localhost', // データベースサーバーのホスト名
-    user:     process.env.AZURE_MYSQL_USER || 'root',       // データベースにアクセスする権限を持つユーザー名を設定
-    password: process.env.AZURE_MYSQL_PASSWORD || dbPassword,   // データベース接続に使用するパスワード
+    host:     process.env.AZURE_MYSQL_HOST || 'only-database.mysql.database.azure.com', // データベースサーバーのホスト名
+    user:     process.env.AZURE_MYSQL_USER || 'ryosuke',       // データベースにアクセスする権限を持つユーザー名を設定
+    password: process.env.AZURE_MYSQL_PASSWORD || 'YuusyaroizeNo.1',   // データベース接続に使用するパスワード
     database: process.env.AZURE_MYSQL_DATABASE || 'score_game',  // 接続されるデータベースの名前
     ssl: {
-        ca: fs.readFileSync('./api/DigiCertGlobalRootCA.crt.pem'),
+        ca: fs.readFileSync('./api/DigiCertGlobalRootG2.crt.pem'),
         rejectUnauthorized: false
     },
     // ssl: true
