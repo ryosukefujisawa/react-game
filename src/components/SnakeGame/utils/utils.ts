@@ -77,15 +77,15 @@ export const moveSnake = async(
         head.y >= CELL_SIZE ||
         newSnake.slice(1).some((body) => body.x === head.x && body.y === head.y)  
     ) {
+        setIntervalTime(200);
         setDirection('STOP');
         setSnake(initialSnake);
-        setIntervalTime(200);
         // setHitCount(0);
         // setUserScore(0);
         setGameOver(true);
         return ;
     }
-    else if ( direction !== 'STOP' ) {
+    else {
         setIntervalTime(prevInterval => prevInterval - 0.3);
         setUserScore(prevScore => prevScore + 1);
     }
