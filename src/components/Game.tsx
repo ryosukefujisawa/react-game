@@ -1,5 +1,6 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import { useEffect } from 'react';
+import { useState } from 'react';
 import Name from './Name';
 import SnakeGame from './SnakeGame/SnakeGame';
 import StartMenu from "./StartMenu";
@@ -16,21 +17,21 @@ const Game = () => {
     const [userScore, setUserScore] = useState<number>(Number);
 
 
-  useEffect(() => {
-    /* 非同期関数 */
-    const fetchScores = async () => {
-      try {
-        /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
-        const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
-        setScores(response.data);
-        console.log(scores);
-      }
-      catch (err) {
-        console.error("Error fetching scores:", err);
-      }
-    };
-    fetchScores();
-  }, [scores]);
+//   useEffect(() => {
+//     /* 非同期関数 */
+//     const fetchScores = async () => {
+//       try {
+//         /* サーバーにHTTP GETリクエストを送信してスコアのリストを取得 */
+//         const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
+//         setScores(response.data);
+//         console.log(scores);
+//       }
+//       catch (err) {
+//         console.error("Error fetching scores:", err);
+//       }
+//     };
+//     fetchScores();
+//   }, [scores]);
 
 //   const handleDeleteScore = async () => {
 //     try {

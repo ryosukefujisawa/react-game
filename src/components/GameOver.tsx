@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect } from 'react';
+// import axios from 'axios';
+// import { useEffect } from 'react';
 import { Score } from './SnakeGame/utils/utils';
 import './css/GameOverStyle.css';
 
@@ -13,7 +13,7 @@ interface GameOverProps {
 }
 
 const GameOver = (props: GameOverProps) => {
-    const {userName, userScore, setScores } = props;
+    // const {userName, userScore, setScores } = props;
 
     const Restart = () => {
         props.setGameOver(false);
@@ -35,26 +35,26 @@ const GameOver = (props: GameOverProps) => {
     // }, [scrollRef]);
 
 
-    useEffect(() => {
-        const handleScoreSubmit = async () => {
-            try {
-              /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
-              await axios.post('https://score-database.azurewebsites.net/scores', { name: userName, score: userScore });
+    // useEffect(() => {
+    //     const handleScoreSubmit = async () => {
+    //         try {
+    //           /* スコアをサーバーに送信 -> 新しいスコアをデータベースに追加 */
+    //           await axios.post('https://score-database.azurewebsites.net/scores', { name: userName, score: userScore });
               
-              /* フォームの入力をクリア */
-              // setUserName('名無し');
+    //           /* フォームの入力をクリア */
+    //           // setUserName('名無し');
               
-              /* 最新のスコアリストを再取得して画面に反映 */
-              const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
-              setScores(response.data);
-            }
-            catch (err) {
-              console.log("Error submitting score:", err);
-            }
-        };
+    //           /* 最新のスコアリストを再取得して画面に反映 */
+    //           const response = await axios.get<Score[]>('https://score-database.azurewebsites.net/scores');
+    //           setScores(response.data);
+    //         }
+    //         catch (err) {
+    //           console.log("Error submitting score:", err);
+    //         }
+    //     };
 
-        handleScoreSubmit();
-    }, [userName, userScore, setScores]);
+    //     handleScoreSubmit();
+    // }, [userName, userScore, setScores]);
 
 
     return (
