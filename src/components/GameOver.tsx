@@ -61,8 +61,8 @@ const GameOver = (props: GameOverProps) => {
         <>
             <div id="gameover">
                 <h1>Game Over!</h1>
-                <button onClick={() => {Restart(); props.setUserScore(0);}}>リスタート</button>
-                <button onClick={() => {Home();    props.setUserScore(0);}}>ホーム</button>
+                <button className="decided" onClick={() => {Restart(); props.setUserScore(0);}}>リスタート</button>
+                <button className="decided" onClick={() => {Home();    props.setUserScore(0);}}>ホーム</button>
             </div>
         </>
     );

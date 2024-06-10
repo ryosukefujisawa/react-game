@@ -1,5 +1,11 @@
+#gameover h1 {
+    padding-top: 30px;
+    color: rgba(255, 33, 33, 0.781);
+    font-size: 5em;
+}
 
-
-/* #snakeGameContents {
-    padding: 0;
-} */
+#gameover .decided {
+    margin-right: 30px;
+    font-size: 1.2em;
+    text-align: center;
+}
